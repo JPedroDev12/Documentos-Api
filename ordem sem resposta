@@ -1,0 +1,125 @@
+
+============================================================================================
+
+abrir o console e adicionar
+
+npm init -y
+
+npm i express -y
+
+npm i knex mysql2
+
+npm i typescript
+
+npm i -D @types/node @types/express
+
+npx tsc --init
+
+============================================================================================
+
+Fazer um local aonde vai ser o diretorio principal no projeto.
+
+Fazer pasta de Controle, Rota, Configurações, Interface, Dto para melhor organização e um app.ts para poder abrir o servidor.
+
+============================================================================================
+
+------------------
+|                |
+|   Interface    |
+|                |
+------------------
+
+Interface. É o que fala sobre cada coluna do banco de dados, mt usado para qm estiver fazendo outras partes do código n se perder.
+
+Fazer a interface ter o banco de dados.
+ou seja, pegando o nome da table e organizando cada coluna e falando oq ela vale.
+
+============================================================================================
+
+----------------
+|              |
+|   Knex.ts    |
+|              |
+----------------
+
+Knex.ts, aonde conecta o banco de dados com o servidor
+
+Ele precisa ter o knex.
+tem q fazer uma variavel q seja o banco de dados, ela ira valer o knex que abre pareteses e chaves, fala q banco(client), cria a conexão e ira falar a porta q normalmente é 3306, o host, usuario, senha e o nome do banco de dados.
+
+============================================================================================
+
+---------------
+|             |
+|     Dto     |
+|             |
+---------------
+
+Dto. É uma pasta para deixar mais organizado o código, nela você cria e exporta "variaveis" falando oque dara para criar, atualizar... coisas assim.
+
+ela precisa da interface (você tera q botar o caminho dela),
+exporta um type com o o nome do que o DTO fara, Ex:
+
+se você quer Criar algo, ele ficara CreateAlgoDTO, ele tera q pegar(Pick) o que sera preciso para criar de acordo com oq se tem na interface.
+
+Se quiser agr atualizar algo, ai ele ficara UpdateAlgoDTO, ele tera que ter um valor parcial, ou seja transforma as propriedades em opcionais, e pegar os valores q quer atualizar 
+
+
+============================================================================================
+
+------------------
+|                |
+|   Controller   |
+|                |
+------------------
+
+Controller. Ele é oq cria as funções de cada table criada, nela você vai fazer as funções de criar, deletar, listar, atualizar, coisas assim.
+
+ele precisa da resposta e da pergunta (req) do express, ele precisa do banco de dados, ou seja vai importar o db e falar aonde o banco esta (no caso no knex), ele precisa da interface e do dto.
+
+--------------------
+
+Como fazer o Get:
+
+--------------------
+
+exportar uma função async com o nome de GetAlgo, dps você precisa chamar a Response e o Request.
+
+Cria uma variavel como o nome da table nela vai precisar dar um await com o a variavel do banco e especificar qual a interface que vai usar, dps disso de o código, no caso do get tem q falar a table, dar o select, dps dizer oq quer selecionar.
+
+dar o return com o status falando que funcionou, dps dizer o nome da variavel para que ele mostra o código funcionar 
+
+
+============================================================================================
+
+----------------
+|              |
+|    Routes    |
+|              |
+----------------
+
+Routes. A pasta Routes é onde ficam definidas as rotas da aplicação, ou seja, os caminhos que o usuário pode acessar no servidor.
+
+precisa da rota do express e os metodos do controller
+
+============================================================================================
+
+----------------
+|              |
+|    App.ts    |
+|              |
+----------------
+
+app.ts. É aonde abre o servidor e adiciona as rotas.
+
+Ele precisa do express e rotas. 
+Uma variavel q vai valer o express (normalmente com o nome de app).
+a porta que normalmente se usa 3000.
+
+fazer a app usar o json no express ou seja = (express.json())
+adicionar as rotas, fazendo o app usar o nome da rota, nome da rota de acordo com o nome do Routes.
+
+fazer o codigo de abrir o servidor, ou seja fazer o app escutar a "porta", () => dps dar o log falando q o servidor abriu
+
+
+

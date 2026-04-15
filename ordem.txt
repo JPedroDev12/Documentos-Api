@@ -1,0 +1,134 @@
+============================================================================================
+
+abrir o console e adicionar
+
+npm init -y
+
+npm i express -y
+
+npm i knex mysql2
+
+npm i typescript
+
+npm i -D @types/node @types/express
+
+npx tsc --init
+
+============================================================================================
+
+Criar app.ts
+
+importar o express do express
+
+importar as rotas
+
+criar uma variavel chamada "app" q vai valer "express()"
+
+criar variavel "port" q vai valer o valor da porta do server (normalmente sendo 3000)
+
+escrever "app.use(express.json())
+
+adicionar as rotas com o comando "app.use("/rota", NomeDaRota)
+
+escrever "app.listen(port, () => {
+    console.log(`mensagem que vai aparecer ao abrir servidor`)
+});
+============================================================================================
+
+Criar o Banco
+
+criar e exportar interfaces
+
+============================================================================================
+
+Interfaces:
+
+exportar interface com o nome da table do banco de dados q você vai faze a interface
+
+dentro dela adicionar tudo q tem dentro dela e dizer se é "string", "number" ou "Date"
+
+============================================================================================
+
+criar o knex e conectar com o banco de dados e fazer ele ser uma variavel, normalmente sendo chamada de db
+
+criar dto, importando a interface dentro dele, exportar um type para criar(para o post), usando o pick, e criar um type usando partial e pick (para o put)
+
+criar o controller importando o req e res, a variavel db e colocar após o from o caminho dela, a interface criada e o dto
+
+============================================================================================
+
+Controller
+
+(oq tem q importar esta em cima)
+
+importar uma função assíncrona com o nome do método q vamos usar (get, post, delete, put...) dentro dos pareteses botar req e res;
+
+--------------------
+
+Como fazer o Get:
+
+--------------------
+
+criar uma variavel chamada "data", escrever "await" sempre que tiver que escrever "db<NomeDaInterface/Table>("NomeDaTable").select(*)", isso é basicamente o "SELECT * FROM tabela"
+
+--------------------
+
+Como fazer o Get por Id:
+
+--------------------
+
+criar variavel chamada "id", falar q requer o parametro id
+
+--------------------
+    
+Como fazer o Post:
+
+--------------------
+
+criar uma variavel chamada "body" e adicionar logo ao lado dela o create que fizemos no dto, essa variavel sera igual a req.body, puxar um "await db<NomeDaInterface/Table>("NomeDaTable").insert(body)", ele basicamente esta fazendo o comando "INSERT as coisas que vamos inserir FROM game", dps adicionar o res e o status
+
+--------------------
+
+Criando o Put:
+
+--------------------
+
+criar variavel id para que possamos selecionar qual (não sei como chamar isso), obrigatório botar o + na frente do req.params.id para que convertemos a string em number;
+
+criar uma variavel body e chamar o DTO de update que criamos no DTO, ter o valor de req.body;
+
+criar variavel (ainda não sei como chamar isso) fazer ela valer um "await db<NomeDaInterface/Table>("NomeDaTable")" e botar o "aonde o id é id, ou seja ".where({id}).first()"
+
+logo dps fazer a regra de negócio (caso n exista tal coisa dar erro, se existe ele funfa), se !ngcQnSeiOnome vai dar status 404.
+
+saindo da regra de negocio fazer o comando do update, no caso selecionando a table aonde o id é o mesmo da url e fazendo o update com o novo valor do body
+
+--------------------
+
+Criando o Delete:
+
+--------------------
+
+criar variavel para pegar o id E NÃO ESQUECER DE CONVERTER O ID EM NUMBER
+
+criar variavel de (n sei o nome ainda po) e fazer ele valer "await db<NomeDaInterface/Table>("NomeDaTable")" e fazer ele buscar o id, ou seja escrever ".where({id}).first()".
+
+fazer a regra de negócio, ou seja, se não encontrou o tal coisa, fazer ele dar status 404.
+
+dps fazer o comando de deletar aonde o id é tal, ou seja, fazer o "DELETE FROM tabelaLá WHERE id = ?"
+
+============================================================================================
+
+Routes: 
+
+importar o Router do express
+
+importar os métodos do controller
+
+criar variavel "router" e falar q ela é igual a "Router()"
+
+criar a rota escrever "router.metodo('/', nome do metodo)
+
+dps de criar todos os metodos exporte o arquivo "export default router"
+
+============================================================================================
