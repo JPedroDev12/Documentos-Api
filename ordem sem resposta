@@ -60,7 +60,7 @@ Dto. É uma pasta para deixar mais organizado o código, nela você cria e expor
 ela precisa da interface (você tera q botar o caminho dela),
 exporta um type com o o nome do que o DTO fara, Ex:
 
-se você quer Criar algo, ele ficara CreateAlgoDTO, ele tera q pegar(Pick) o que sera preciso para criar de acordo com oq se tem na interface.
+se você quer Criar algo, ele ficara CreateAlgoDTO, ele tera q pegar/Pick<> o que sera preciso para criar de acordo com oq se tem na interface.
 
 Se quiser agr atualizar algo, ai ele ficara UpdateAlgoDTO, ele tera que ter um valor parcial, ou seja transforma as propriedades em opcionais, e pegar os valores q quer atualizar 
 
