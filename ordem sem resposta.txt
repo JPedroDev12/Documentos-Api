@@ -45,7 +45,7 @@ ou seja, pegando o nome da table e organizando cada coluna e falando oq ela vale
 Knex.ts, aonde conecta o banco de dados com o servidor
 
 Ele precisa ter o knex.
-tem q fazer uma variavel q seja o banco de dados, ela ira valer o knex que abre pareteses e chaves, fala q banco(client), cria a conexão e ira falar a porta q normalmente é 3306, o host, usuario, senha e o nome do banco de dados.
+tem q criar e exportar uma variavel q seja o banco de dados, ela ira valer o knex que abre pareteses e chaves, fala q banco(client), cria a conexão e ira falar a porta q normalmente é 3306, o host, usuario, senha e o nome do banco de dados.
 
 ============================================================================================
 
